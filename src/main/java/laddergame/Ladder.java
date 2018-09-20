@@ -1,30 +1,35 @@
 package laddergame;
 
-import java.util.Random;
+import static laddergame.Util.generateRandomNumber;
 
 public class Ladder {
-    private final int RANGE = 9;
-    private final String DASH = "-";
+    private boolean[] lines;
 
-    private String lines[];
-
-    public Ladder(int maxHeight) {
-        this.lines = new String[maxHeight];
+    public Ladder(int horizontal) {
+        this.lines = new boolean[horizontal - 1];
     }
 
-    public String[] getLines() {
+    public boolean[] getLines() {
         return this.lines;
     }
 
-    public void makeLine(int maxHeight) {
-        for(int i=0; i<maxHeight; i++) {
-            Random random = new Random();
-            int r = random.nextInt(RANGE);
-            if(r % 2 == 0) {
-                this.lines[i] = DASH;
-            } else {
-                this.lines[i] = " ";
-            }
+    public void makeLine() {
+        boolean preResult = false;
+
+        for(int i = 0; i < lines.length; i++) {
+            preResult = isMakeLine(i, preResult);
         }
+    }
+
+    private boolean isMakeLine(int i, boolean preResult) {
+        boolean result = false;
+        int r = generateRandomNumber();
+
+        if ((r % 2 == 0) && (preResult != true)) {
+            result = true;
+        }
+        lines[i] = result;
+
+        return result;
     }
 }

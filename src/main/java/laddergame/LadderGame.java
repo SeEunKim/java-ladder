@@ -10,9 +10,9 @@ public class LadderGame {
     }
 
     public void playGame(int people, int maxHeight) {
-        for(int i=0; i<people-1; i++) {
-            Ladder ladder = new Ladder(maxHeight);
-            ladder.makeLine(maxHeight);
+        for(int i = 0; i < maxHeight; i++) {
+            Ladder ladder = new Ladder(people);
+            ladder.makeLine();
             ladders.add(ladder);
         }
     }

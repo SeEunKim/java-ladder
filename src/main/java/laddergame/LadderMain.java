@@ -8,6 +8,6 @@ public class LadderMain {
         LadderGame ladderGame = new LadderGame();
         ladderGame.playGame(people, maxHeight);
 
-        ResultView.printResult(ladderGame, maxHeight);
+        ResultView.printResult(ladderGame);
     }
 }
