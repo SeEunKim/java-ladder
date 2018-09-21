@@ -20,17 +20,17 @@ public class Line {
 
         for(int pos = 0; pos < countOfPerson - 1; pos++) {
             preResult = isMakeLine(preResult);
+            points.add(preResult);
         }
     }
 
-    private boolean isMakeLine(boolean preResult) {
+    public static boolean isMakeLine(boolean preResult) {
         boolean result = false;
         int randomNumber = generateRandomNumber();
 
         if ((randomNumber % 3 != 0) && (preResult != true)) {
             result = true;
         }
-        points.add(result);
 
         return result;
     }
