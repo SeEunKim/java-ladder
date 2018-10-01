@@ -31,7 +31,22 @@ public class Line {
         if (((randomNumber % 3) != 0) && (preResult != true)) {
             result = true;
         }
-
         return result;
+    }
+
+    public void move(Player player) {
+        int index = player.getIndex();
+
+        if (index == 0) {
+            player.move(false, points.get(index));
+        }
+
+        if (index == points.size()) {
+            player.move(points.get(index - 1), false);
+        }
+
+        if (index > 0 && index < points.size()) {
+            player.move(points.get(index-1), points.get(index));
+        }
     }
 }

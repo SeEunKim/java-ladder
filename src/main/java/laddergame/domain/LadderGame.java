@@ -13,7 +13,7 @@ public class LadderGame {
     public LadderGame(String names, String result) {
         String[] name = names.split(Util.COMMA);
         for (int i = 0; i < name.length; i++) {
-            players.add(new Player(name[i]));
+            players.add(new Player(name[i], i));
         }
         results = result.split(Util.COMMA);
     }
@@ -35,54 +35,17 @@ public class LadderGame {
 
     public void playGame() {
         for (int i = 0; i < players.size(); i++) {
-            getGameResult(i);
+            move(players.get(i));
         }
-    }
-
-    public void getGameResult(int location) {
-        int index = location;
-
-        for (int i = 0; i < lines.size(); i++) {
-            index = getIndexLine(index, i);
-            players.get(location).saveResult(results[index]);
-        }
-    }
-
-    private int getIndexLine(int index, int i) {
-        if(index == 0) {
-            index = getIndexFirst(index, i);
-        } else if(index == lines.get(0).getLines().size()) {
-            index = getIndexLast(index, i);
-        } else {
-            index = getIndex(index, i);
-        }
-        return index;
-    }
-
-    private int getIndex(int index, int i) {
-        if(lines.get(i).getLines().get(index) == true) {
-            index = index + 1;
-        } else if(lines.get(i).getLines().get(index - 1) == true) {
-            index = index - 1;
-        }
-        return index;
-    }
-
-    private int getIndexLast(int index, int i) {
-        if(lines.get(i).getLines().get(index - 1) == true) {
-            index = index - 1;
-        }
-        return index;
-    }
-
-    private int getIndexFirst(int index, int i) {
-        if(lines.get(i).getLines().get(index) == true) {
-            index = index + 1;
-        }
-        return index;
     }
 
     public String[] getResults() {
         return results;
+    }
+
+    public void move(Player player) {
+        for (Line line : lines) {
+            line.move(player);
+        }
     }
 }
