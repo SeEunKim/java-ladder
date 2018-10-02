@@ -17,7 +17,7 @@ public class LadderMain {
         ResultView.printLadderGameResult(ladderGame);
 
         boolean isFinish = false;
-        while(isFinish == false) {
+        while(!isFinish) {
             String resultForName = InputView.getNameForTheResult();
             isFinish = ResultView.printResultForName(ladderGame, resultForName);
         }

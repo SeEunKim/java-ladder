@@ -49,7 +49,7 @@ public class ResultView {
 
     public static String printHyphen(boolean isLine) {
         String line = EMPTY_SPACE;
-        if (isLine == true) {
+        if (isLine) {
             line = HYPHEN;
         }
         return line;

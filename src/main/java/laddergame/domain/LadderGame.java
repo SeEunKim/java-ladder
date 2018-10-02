@@ -34,8 +34,8 @@ public class LadderGame {
     }
 
     public void playGame() {
-        for (int i = 0; i < players.size(); i++) {
-            move(players.get(i));
+        for (Player player : players) {
+            move(player);
         }
     }
 
